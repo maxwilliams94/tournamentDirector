@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Linq;
 
 namespace tournament
 {
@@ -7,6 +8,7 @@ namespace tournament
     {
         int totalTeams;
         Hashtable teams = new Hashtable();
+        Hashtable groups = new Hashtable();
         public Tournament(string name, string[] team_list)
         {
 
@@ -20,12 +22,19 @@ namespace tournament
             }
             Console.WriteLine($"Read in {0} teams", totalTeams);
 
-
         }
-        public void CreateGroups()
+        public void CreateGroups(int totalGroups = 4)
         {
-            // Create group via looping through the team list
-            int[] teamSeeds = new int[this.totalTeams];
+            // Create groups via looping through the seed list and remove entries as they are added.
+            // Store Groups in groups Hashtable
+            // Store team objects within array under group Hashtable key
+            // Will need to cycle through the groups, not as easy as python...
+            int[] teamSeeds = Enumerable.Range(0, totalTeams).ToArray();
+            while (teamSeeds.Length > 0)
+            {
+                // Get team instance to be added to a group (top seed of remaining seeds)
+                Team team = (Team) teams[teamSeeds[0]];
+            }
 
         }
         // Timings
