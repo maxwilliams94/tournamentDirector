@@ -5,12 +5,13 @@ namespace tournament
 {
     public class Tournament
     {
+        int totalTeams;
+        Hashtable teams = new Hashtable();
         public Tournament(string name, string[] team_list)
         {
 
-            int totalTeams = team_list.Length;
+            totalTeams = team_list.Length;
             // Create Hashtable of team objects with key as seed, value a Team instance
-            Hashtable teams = new Hashtable();
             for (int i=0; i<totalTeams; i++)
             {
                 Team aTeam = new Team(team_list[i], i, i);
@@ -20,6 +21,11 @@ namespace tournament
             Console.WriteLine($"Read in {0} teams", totalTeams);
 
 
+        }
+        public void CreateGroups()
+        {
+            // Create group via looping through the team list
+            int[] teamSeeds = new int[this.totalTeams];
 
         }
         // Timings
